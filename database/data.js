@@ -1,4 +1,4 @@
-export default [
+export const questions =[
     {
         id: 1,
         question : "Javascript is an _______ language",

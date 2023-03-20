@@ -1,19 +1,25 @@
-import { Router } from "express";
-const router = Router();
+import express from "express";
+const router = express.Router();
 
 /** import controllers */
-import * as controller from '../controllers/controller.js';
+import {
+  getQuestions,
+  insertQuestions,
+  dropQuestions,
+  getResults,
+  storeResults,
+  dropResults,
+} from "../controllers/controller.js";
 
 /** Questions Routes API */
 
-router.route('/questions')
-        .get(controller.getQuestions) /** GET Request */
-        .post(controller.insertQuestions) /** POST Request */
-        .delete(controller.dropQuestions) /** DELETE Request */
+router.get("/questions", getQuestions); /** GET Request */
+router.post("/questions", insertQuestions); /** POST Request */
+router.delete("/questions", dropQuestions); /** DELETE Request */
 
-router.route('/result')
-        .get(controller.getResult)
-        .post(controller.storeResult)
-        .delete(controller.dropResult)
+/** Results Routes API */
+router.get("/result", getResults);
+router.post("/result", storeResults);
+router.delete("/result", dropResults);
 
 export default router;
